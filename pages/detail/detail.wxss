@@ -1,0 +1,12 @@
+/* pages/detail/detail.wxss */
+.weui-form-preview__hd, .weui-form-preview__bd{
+	text-align: initial;
+}
+
+.weui-form-preview__btn.weui-form-preview__btn_primary{
+	color: dodgerblue;
+}
+
+page{
+	background: white;
+}

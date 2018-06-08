@@ -1,0 +1,78 @@
+<!--创建视图容器,顶部界面-->
+<view class=" my-top-fixed">
+        <view class="weui-search-bar">
+            <!--绑定tabAbout，跳转About界面-->
+            <view class="weui-btn weui-btn_plain-default my-btn-more my-btn-icon" bindtap="tapAbout">
+                <image src="../../static/icon_nav_form.png"></image>
+            </view>
+            <!--搜索格式-->
+            <view class="weui-search-bar__form">
+                <!--搜索栏view-->
+                <view class="weui-search-bar__box">
+                    <!--搜索栏，icon是图标，搜索的放大镜图标-->
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <!--输入框,空时占位为“搜索”，输入时触发input事件处理函数inputTyping，点击完成按钮时触发函数tapSearch-->
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="tapSearch" value="{{keyword}}" />
+                </view>
+                <!--回车以后搜索内容被隐藏,只显示"搜索"和图标-->
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+</view>
+<!--滚动区域-->
+<view class="my-noscroll" hidden="{{inputShowed}}">
+  <swiper indicator-dots="true" autoplay="true" hidden="{{!isNewest}}" interval="3000">
+    <block wx:for="{{ads}}" wx:key="{{index}}">
+      <swiper-item>
+        <!--navigator路由,url属性是路径？代表传给ads/ads的值-->
+        <navigator url="../ads/ads?url={{item.res_jumpurl}}" style="width:100%; height:100%;">
+          <image src="{{item.res_imgurl}}" class="slide-image" mode="aspectFill" style="width:100%; height:100%;"/>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <navigator class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="{{*this}}" url="../detail/detail?id={{item.id}}">
+    <view class="weui-panel__hd">
+      <span class="my-text-left">{{item.companyName}}</span>
+      <span class="my-text-right my-panel-cell">{{item.title}}</span>
+    </view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui5px 15px 15px 15px5px 15px 15p-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}</view>
+        <view class="weui-media-box__desc">
+          <!--<span class="my-text-left my-panel-cell">浏览量：{{item.number}}</span>-->
+          <span class="my-text-left my-panel-cell" >浏览量：{{item.heat}}</span>
+          <span class="my-text-right my-panel-cell">可信度：{{item.trust}}</span>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>
+
+<view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line" wx:if="{{!hasData}}">暂无数据</view>
+</view>
+
+<!--添加的页面-->
+<include src="../../utils/postButton.wxml"/>
+
+<!--绑定tapBackground函数,搜索界面-->
+<view class="my-panel my-panel-full my-history" hidden="{{!inputShowed}}" bindtap="tapBackground" id="historyBackground"> 
+  <view class="weui-cells__title">搜索历史</view>  
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{history.length === 0}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line" >暂无搜索历史</view>
+  </view>            
+  <view class="weui-cells weui-cells_after-title" wx:if="{{history.length !== 0}}">         
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{history}}" wx:key="{{*this}}" bindtap="clickHistory" data-word="{{item}}">
+          <view class="weui-cell__bd">{{item}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+  </view>    
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{history.length !== 0}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line my-panel-tag" bindtap="clearHistory">清除历史</view>
+  </view>                        
+</view>

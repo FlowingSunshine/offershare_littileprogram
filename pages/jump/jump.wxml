@@ -1,0 +1,22 @@
+<!--pages/jump/jump.wxml-->
+<view class="my-noscroll">
+    <view class="avatar" >
+    <image animation="{{anim}}" mode="aspectFill" src="../../static/about.jpg"></image>
+    </view>
+    <view class="weui-article">
+        <view class="weui-article__h1 my-text-center my-panel-cell">OfferShow终于通过企业认证啦！</view>
+        <view class="weui-article__section">
+            <view class="weui-article__section">
+                <view class="weui-article__p">
+                由于平台政策的限制，OfferShow需要更新为企业版本。为获得更全面的功能，请点击下方按钮跳转到OfferShow小程序企业版本吧~
+                </view>            
+                <view class="weui-article__p">
+                OfferShow将继续为米娜桑提供最准确的offer信息！
+                </view>
+            </view>
+        </view>
+        <view class="weui-article__section">
+            <button class="weui-btn" type="default" plain="true" bindtap="tapBack">~点我跳转~</button> 
+        </view>
+    </view>
+</view>

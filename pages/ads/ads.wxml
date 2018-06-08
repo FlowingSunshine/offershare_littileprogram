@@ -1,0 +1,8 @@
+<!--pages/ads/ads.wxml-->
+<!--web-view 组件是一个可以用来承载网页的容器，会自动铺满整个小程序页面
+  src是webview 指向网页的链接-->
+<!--可以配合Page实例的onLoad方法来获取url的具体值，也就是一个微信小程序页面中只有一个web-view，
+  但是这个web-view的内容可以根据上一个页面传递的参数来获取页面URL-->
+<!--这里上一个页面就是offer-->
+<web-view src="{{url}}"></web-view>
+<!-- <text>{{url}}</text> -->
