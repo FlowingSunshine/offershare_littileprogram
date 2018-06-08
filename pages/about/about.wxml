@@ -1,0 +1,44 @@
+<!--pages/about/about.wxml-->
+<view class="weui-flex my-top my-top-fixed my-top-style">
+  <view class="my-btn-icon" bindtap="tapBack" >
+    <image src="../../static/icon_nav_back.png"></image>
+  </view>
+  <view class="weui-flex__item">
+    <view class="placeholder">关于我们</view>
+  </view>
+</view>
+<view class="my-noscroll">
+    <view class="avatar" >
+    <image animation="{{anim}}" mode="aspectFill" src="../../static/about.jpg"></image>
+    </view>
+    <view class="weui-article">
+        <view class="weui-article__h1 my-text-center">OfferShow是什么？</view>
+        <view class="weui-article__section">
+            <view class="weui-article__section">
+                <view class="weui-article__p  my-text-center my-panel-cell">匿名的校招Offer交流平台，</view>
+                <view class="weui-article__p  my-text-center my-panel-cell">专注于服务在校大学生求职的最后一步。</view>
+                <view class="weui-article__p">
+                官网：www.ioffershow.com
+                </view>
+                <view class="weui-article__p">
+                OfferShow版本号：2.1.0
+                </view>                
+                <view class="weui-article__p">
+                主页君联系邮箱：abc_123@zju.edu.cn
+                </view>
+                <view class="weui-article__p">
+                小程序开发者联系邮箱：wanghsinche@hotmail.com
+                </view>
+                <view class="weui-article__p">
+                OfferShow小程序源码github地址：https://github.com/wanghsinche/offerShow_wxminip
+                </view>
+                <view class="weui-article__p">
+                郑重声明：OfferShow小程序仅提供爆料，检索以及本地收藏功能，不会记录获取和记录任何微信用户的微信号个人信息。 
+               </view>
+            </view>
+        </view>
+        <view class="weui-article__section">
+            <button class="weui-btn" type="default" plain="true" bindtap="tapBack">团长最高！</button> 
+        </view>
+    </view>
+</view>

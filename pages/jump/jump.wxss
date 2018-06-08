@@ -1,0 +1,25 @@
+/* pages/about/about.wxss */
+.my-noscroll{
+    margin-top: 0;   
+}
+.text{
+    margin: 8rpx 16rpx;
+}
+.center{
+	text-align: center;
+}
+.avatar{
+    margin: 32rpx auto;
+    width: 300rpx;
+}
+.avatar image{
+    opacity: 0;
+    display: inline-block;
+    width: 280rpx;
+    height: 280rpx;
+    border-radius: 50%;
+    border: 1px gray solid;
+}
+.weui-article__p{
+    word-wrap: break-word;
+}

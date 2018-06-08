@@ -1,5 +1,13 @@
 /**app.wxss**/
-.container {
+@import 'weui.wxss';
+@import 'global.wxss';
+page{
+  position: relative;
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;   overflow-y: scroll;
+  background: #EFEFF4;
+}
+
+/*.container {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -8,3 +16,42 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+time{
+  display: block;
+  font-size: 32rpx;
+  color: gray;
+  text-align: right;
+}
+
+
+.bottom{
+  position: fixed;
+  display: -webkit-flex;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  box-shadow: 0 -2px 2px gray;
+}
+.bottom .btn{
+    flex: 1 0 0;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.btn.curr{
+    border-top: 8rpx dodgerblue solid;  
+    color: dodgerblue;
+}
+
+.btn.good{
+    color: white;
+    background: dodgerblue;
+}
+.btn.bad{
+    color: black;
+    background: ghostwhite;
+}
+*/
