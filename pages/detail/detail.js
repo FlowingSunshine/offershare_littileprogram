@@ -8,7 +8,7 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'OfferShow-' + this.data.detail.company +'-'+ this.data.detail.position,
+      title: 'OfferShow-' + this.data.companyName +'-'+ this.data.title,
       path: ['pages/detail/detail?id=',this.data.id,'&getdata=request'].join(''),
       // path: 'pages/offer/offer',
       success: function(res) {
@@ -34,16 +34,17 @@ Page({
     else{
       favState = false;
     }
-    if (options.getdata === "request") {
+    if (options.getdata === undefined) {
       app.getAjaxData({
-        url:[app.globalData.domain, 'webapi/jobdetail/'].join('/'),
+        url:[app.globalData.domain, 'offer/select/id'].join('/'),
         data:{
           'id':options.id
         },
         success: function(res) {
           // success
+          console.log("company:",res.data),
           _this.setData({
-            detail: res.data.info,
+            detail: res.data,
             id: options.id,
             hasFav: favState
           });

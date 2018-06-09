@@ -129,7 +129,7 @@ Page({
       'company_name':this.info.company,
       //'position':this.info.position,
       //'city':this.info.city,
-      'title':this.info.city,
+      'title':this.info.position,
       'salary_month':this.info.salary,
       'salary_year':"22w",
       "user_id":1,

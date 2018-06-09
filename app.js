@@ -140,7 +140,8 @@ App({
   globalData: {
     isiOS: wx.getSystemInfoSync().system.indexOf('iOS') === -1?false:true,
    // token: token.token,
-    domain: 'http://203.195.206.83:8004',
+    domainwenge: 'http://203.195.206.83:8004',
+    domain:'http://192.168.1.6:8002',
     userInfo: null,
     scene: 1001,
     fromPath: '',

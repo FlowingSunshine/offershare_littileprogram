@@ -14,7 +14,7 @@
                     <view class="weui-label">职位</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <view class="weui-input my-panel-cell">{{detail.position}}</view>
+                    <view class="weui-input my-panel-cell">{{detail.title}}</view>
                 </view>
             </view>            
             <view class="weui-cell weui-cell_input">
@@ -22,7 +22,7 @@
                     <view class="weui-label">行业</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <view class="weui-input">{{detail.hangye}}</view>
+                    <view class="weui-input">{{detail.category}}</view>
                 </view>
             </view>            
             <view class="weui-cell weui-cell_input">
@@ -31,7 +31,7 @@
                 </view>
                 <view class="weui-cell__bd">
                     <view class="weui-input">
-                    <navigator url="../corp/corp?name={{detail.company}}" class="my-panel-link">{{detail.company}}</navigator>
+                    <navigator url="../corp/corp?name={{detail.company}}" class="my-panel-link">{{detail.companyName}}</navigator>
                    </view>
                 </view>
             </view>                        
@@ -48,7 +48,7 @@
                     <view class="weui-label">学历</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <view class="weui-input">{{detail.xueli}}</view>
+                    <view class="weui-input">{{detail.education}}</view>
                 </view>
             </view>              
             <view class="weui-cell weui-cell_input my-panel-cell">
@@ -56,7 +56,7 @@
                     <view class="weui-label">工资</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <view class="weui-input">{{detail.salary}}</view>
+                    <view class="weui-input">{{detail.salaryMonth}}</view>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input my-panel-cell">
@@ -64,7 +64,7 @@
                     <view class="weui-label">可信度</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <view class="weui-input">{{detail.score}}</view>
+                    <view class="weui-input">{{detail.trust}}</view>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input my-panel-cell">
@@ -72,7 +72,7 @@
                     <view class="weui-label">浏览量</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <view class="weui-input">{{detail.number}}</view>
+                    <view class="weui-input">{{detail.heat}}</view>
                 </view>
             </view> 
             <view class="weui-cell weui-cell_input">
