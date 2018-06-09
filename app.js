@@ -90,7 +90,7 @@ App({
     //发起请求
     wx.request({
       url: param.url,  //一个后台controller提供的方法
-      data: textls.join('&'),  //传入参数
+      data: param.data,  //传入参数
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {
         'Content-Type': 'application/json'  //json数据类型
@@ -141,7 +141,7 @@ App({
   globalData: {
     isiOS: wx.getSystemInfoSync().system.indexOf('iOS') === -1?false:true,
    // token: token.token,
-    domain: 'http://localhost:8080/offer',
+    domain: 'http://203.195.206.83:8004',
     userInfo: null,
     scene: 1001,
     fromPath: '',

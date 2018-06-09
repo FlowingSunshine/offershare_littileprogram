@@ -47,7 +47,7 @@ Page({
         if (app.globalData.needReq || this.cache.length < 1) {
           app.globalData.needReq = false;
           //调用getInfo，我需要一个后台提供的url,获取list信息(url，pastData,cache)
-          this.getInfo([app.globalData.domain, 'select', this.data.kind, ''].join('/'), {}, true);
+          this.getInfo([app.globalData.domain, 'offer/select', this.data.kind, ''].join('/'), {}, true);
           //转发小程序函数
           //this.getAds();
           //是最新列表而非搜索页
@@ -133,6 +133,7 @@ Page({
     },  
 */
     //i can't  understand
+    /*
     getAds: function() {
       var _this = this;
       app.getAjaxData({

@@ -37,7 +37,7 @@
   </swiper>
   <navigator class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="{{*this}}" url="../detail/detail?id={{item.id}}">
     <view class="weui-panel__hd">
-      <span class="my-text-left">{{item.companyName}}</span>
+      <span class="my-text-left">{{item.category}}</span>
       <span class="my-text-right my-panel-cell">{{item.title}}</span>
     </view>
     <view class="weui-panel__bd">

@@ -125,14 +125,18 @@ Page({
   },
   tapSubmit:function(){
     var param = {
-      'hangye':this.data.category[this.data.cateIndex],
-      'company':this.info.company,
-      'position':this.info.position,
-      'city':this.info.city,
-      'salary':this.info.salary,
-      'xueli':this.data.title[this.data.titleIndex]
+      'category':this.data.category[this.data.cateIndex],
+      'company_name':this.info.company,
+      //'position':this.info.position,
+      //'city':this.info.city,
+      'title':this.info.city,
+      'salary_month':this.info.salary,
+      'salary_year':"22w",
+      "user_id":1,
+      'education':this.data.title[this.data.titleIndex]
     };   
     var regitem ;
+    /*
     for(var i in param){
       regitem = this.matchreg[i]||this.matchreg['default'];
       if(!regitem.test(param[i])){
@@ -143,8 +147,8 @@ Page({
         });
         return;        
       }
-    }
-    param['remark'] = this.info.remark;
+    }*/
+    param['content'] = this.info.remark;
     wx.showToast({
       'title':'提交中',
       'icon':'loading',
