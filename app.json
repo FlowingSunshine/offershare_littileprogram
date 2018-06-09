@@ -13,7 +13,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1e90ff",
-    "navigationBarTitleText": "OfferShow-校招薪水",
+    "navigationBarTitleText": "OfferShare",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },

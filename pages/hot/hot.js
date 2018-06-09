@@ -3,7 +3,7 @@ var app = getApp();
 Page({
   data: {
     list: [],
-    kind: 'jobhot',
+    kind: 'select/heat',
     keyword: '',
     anim: {}
   },
@@ -35,7 +35,8 @@ Page({
       data: pastData,
       success: function(res) {
         // success
-        var list = res.data.info;
+        var list = res.data;
+        console.log("hot get list:",list);
           // select unique corperation
           var hash = {};
           var filted = [];
@@ -44,6 +45,7 @@ Page({
             'number': 0,
             'positions': []
           };
+          /*
           var ii = 0;
           list.forEach((v, i) => {
             if (hash.hasOwnProperty(v.company)) {
@@ -63,9 +65,9 @@ Page({
 
           filted.sort((a, b)=>{
             return b.number - a.number;
-          });
+          });*/
           _this.setData({
-            list: filted,
+            list: list,
             corpMode: true
           });
       },
@@ -85,7 +87,7 @@ Page({
   },
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
-    this.getInfo([app.globalData.domain, 'webapi', this.data.kind, ''].join('/'));
+    this.getInfo([app.globalData.domain, 'offer', this.data.kind, ''].join('/'));
   },
   onReady: function() {
     // 页面渲染完成

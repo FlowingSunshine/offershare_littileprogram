@@ -25,16 +25,17 @@
 </view>
 <!--滚动区域-->
 <view class="my-noscroll" hidden="{{inputShowed}}">
-  <swiper indicator-dots="true" autoplay="true" hidden="{{!isNewest}}" interval="3000">
+<!-- 保留广告位，以备后续需要-->
+  <!--<swiper indicator-dots="true" autoplay="true" hidden="{{!isNewest}}" interval="3000">
     <block wx:for="{{ads}}" wx:key="{{index}}">
-      <swiper-item>
+      <swiper-item>-->
         <!--navigator路由,url属性是路径？代表传给ads/ads的值-->
-        <navigator url="../ads/ads?url={{item.res_jumpurl}}" style="width:100%; height:100%;">
+        <!--<navigator url="../ads/ads?url={{item.res_jumpurl}}" style="width:100%; height:100%;">
           <image src="{{item.res_imgurl}}" class="slide-image" mode="aspectFill" style="width:100%; height:100%;"/>
         </navigator>
       </swiper-item>
     </block>
-  </swiper>
+  </swiper>-->
   <navigator class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="{{*this}}" url="../detail/detail?id={{item.id}}">
     <view class="weui-panel__hd">
       <span class="my-text-left">{{item.category}}</span>

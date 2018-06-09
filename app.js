@@ -98,7 +98,6 @@ App({
       success: function(res) {
         // success
         var sour = {};
-        console.log("app get data",res.data);
         param.success(res);
         /*
         if (typeof param.success === 'function' && res.data.r === 1) {
