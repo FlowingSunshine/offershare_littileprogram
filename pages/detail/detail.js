@@ -8,8 +8,8 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'OfferShow-' + this.data.companyName +'-'+ this.data.title,
-      path: ['pages/detail/detail?id=',this.data.id,'&getdata=request'].join(''),
+      title: 'Gayfai-' + this.data.detail.companyName +'-'+ this.data.detail.title,
+      path: ['pages/detail/detail?id=',this.data.id].join(''),
       // path: 'pages/offer/offer',
       success: function(res) {
         wx.showToast({
@@ -25,6 +25,28 @@ Page({
   },  
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
+    // 统计浏览量
+    app.getAjaxData({
+      url: [app.globalData.domain, 'offer/add/heat'].join('/'),
+      data: {
+        'id': options.id
+      },
+      success: function (res) {
+        // success
+          _this.setData({
+            detail: res.data,
+            id: options.id,
+            hasFav: favState
+          });
+      },
+      fail: function (res) {
+        // fail
+      },
+      complete: function (res) {
+        // complete
+        wx.hideToast();
+      }
+    });
     var temp,
     _this = this,
     favState = false;
@@ -42,7 +64,8 @@ Page({
         },
         success: function(res) {
           // success
-          console.log("company:",res.data),
+          console.log("id:",options.id),
+
           _this.setData({
             detail: res.data,
             id: options.id,
@@ -59,7 +82,9 @@ Page({
       });
     }
     else{
+      
       temp = app.getCache(options.id);
+      console.log("temp:",temp,"options.id",options.id),
       this.setData({
         detail: temp,
         id: options.id,

@@ -21,7 +21,7 @@
       </view>
     </view>
     <view class="weui-panel__hd">
-      <view class="weui-media-box__desc weui-media-box__title_in-text my-panel-title">最可信工资：</view>
+      <view class="weui-media-box__desc weui-media-box__title_in-text my-panel-title">平均工资：</view>
     </view>
     <view class="weui-panel__bd">
       <view class="weui-media-box weui-media-box_text">

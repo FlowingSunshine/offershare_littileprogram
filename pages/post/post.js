@@ -14,9 +14,7 @@ Page({
       '传媒|印刷|艺术|设计',
       '咨询|法律|教育|翻译',
       '服务业',
-      '能源|环保|农业|科研',
-      '服务业',
-      '兼职|实习|社工|其他'     
+      '兼职|实习'     
     ],
     title:[
       '博士985',
@@ -30,6 +28,16 @@ Page({
       '本科其他',
       '大专',
       '其它'  
+    ],
+    company:[
+      '腾讯',
+      '阿里',
+      '百度',
+      '华为',
+      '美团',
+      '滴滴',
+      '今日头条',
+      '其他',
     ],
     cateIndex:3,
     titleIndex:6,
@@ -133,7 +141,7 @@ Page({
       'salary_month':this.info.salary,
       'salary_year':"22w",
       "user_id":1,
-      'education':this.data.title[this.data.titleIndex]
+      'eduation':this.data.title[this.data.titleIndex]
     };   
     var regitem ;
     /*

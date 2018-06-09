@@ -89,7 +89,7 @@
         <view id="remark" class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <view class="weui-textarea" >{{detail.remark}}</view>
+                    <view class="weui-textarea" >{{detail.externalContent}}</view>
                 </view>
             </view>
         </view>    

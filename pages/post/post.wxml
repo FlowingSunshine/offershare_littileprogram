@@ -9,15 +9,7 @@
 
 <view class="my-scroll" >
 
-        <view id="basic" class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">公司</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <input class="weui-input" bindinput="onInput" placeholder="公司名称" id="company" />
-                </view>
-            </view>
+        <view id="basic" class="weui-cells weui-cells_after-title">        
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
                     <view class="weui-label">职位</view>
