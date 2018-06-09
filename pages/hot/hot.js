@@ -9,7 +9,7 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'OfferShow-最可信的校招薪水交流平台',
+      title: '校招薪水交流平台',
       path: 'pages/hot/hot',
       success: function(res) {
         wx.showToast({
@@ -41,7 +41,7 @@ Page({
           var hash = {};
           var filted = [];
           var temp = {
-            'company': '',
+            'company': list.companyName,
             'number': 0,
             'positions': []
           };

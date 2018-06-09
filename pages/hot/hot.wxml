@@ -6,9 +6,9 @@
 <view class="my-noscroll">
   <navigator class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="{{*this}}" url="../corp/corp?name={{item.company}}">
     <view class="weui-panel__hd">
-      <view class="weui-media-box__title my-panel-title my-text-left">{{item.company}}</view>
+      <view class="weui-media-box__title my-panel-title my-text-left">{{item.companyName}}</view>
       <view class="my-panel-cell my-text-right">
-        浏览量：{{item.number}}
+        浏览量：{{item.heat}}
       </view>
     </view>
     <view class="weui-panel__bd">
