@@ -12,12 +12,11 @@ Page({
         inputShowed: false,   //xiansh
         hasData: true,
         anim: {},
-        history: [],
+        searchhistory: [],
         inputval:'',
         keyword: '',            
     },
     cache : [],
-
     //转发
     onShareAppMessage: function () {
       return {
@@ -55,8 +54,15 @@ Page({
             isNewest: true
           })
           this.setData({
-            'history':wx.getStorageSync('history') || []
-          });      
+            'searchhistory':wx.getStorageSync('searchhistory') || []
+          });  
+          /*
+          wx.setStorageSync('pagehistory', this.data.list);
+          console.log(wx.getStorageSync('pagehistory'));
+          this.setData({
+            'pagehistory': wx.getStorageSync('pagehistory') || []
+          });  */
+         
         }
         /*
         this.getInfo([app.globalData.domain, 'webapi', this.data.kind, ''].join('/'), {});
@@ -177,7 +183,7 @@ Page({
               wx.showToast({
                 title: '无结果',
                 icon: 'loading',
-                duration: 10000
+                duration: 2000
               });
             }
             else{
@@ -186,9 +192,10 @@ Page({
             }
             //更新data的list
             _this.setData({
-              list: list,
+              list: app.globalData.offerpagehistory.concat(list),   
               hasData: list.length?true:false
             });
+            app.globalData.offerpagehistory=_this.data.list;
             if (cache) {
               _this.cache = list;
             }
@@ -230,6 +237,7 @@ Page({
       });
       if (e.detail.value === '') {
         // this.getInfo([app.globalData.domain, 'webapi', this.data.kind, ''].join('/'), {});
+        
         this.setData({
           isNewest: true
         })
@@ -248,9 +256,9 @@ Page({
     },
     //清除搜索历史
     clearHistory: function(e){
-        wx.setStorageSync('history', []);
+        wx.setStorageSync('searchhistory', []);
         this.setData({
-          'history':[]
+          'searchhistory':[]
         });        
     },   
 
@@ -296,9 +304,9 @@ Page({
             while(history.length > 4){
               history.pop();
             }
-            wx.setStorageSync('history', history);
+            wx.setStorageSync('searchhistory', history);
             this.setData({
-              'history':history
+              'searchhistory':history
             });
           }
         }
@@ -308,5 +316,67 @@ Page({
         wx.navigateTo({
           url: '../about/about'
         });
-    }
+    },
+    /** 
+   * 页面上拉触底事件的处理函数 
+   */  
+  onReachBottom: function () {
+      var that = this;
+      var history=this.data.list;
+      console.log("history:",history);
+      // 显示加载图标  
+      wx.showLoading({
+        title: '玩命加载中',
+      })
+      // 页数+1  
+      app.globalData.page = app.globalData.page + 1;
+      limit = (app.globalData.page+1)*10;
+      offset = app.globalData.page*10;
+      this.getInfo([app.globalData.domain, 'offer/select', this.data.kind, '?offset='+offset].join('/'), {}, true);
+      /*
+      this.setData({
+        list: this.list+history,
+        hasData: list.length ? true : false
+      });*/
+      
+      /*
+      success: function (res) {
+        // 回调函数  
+        var moment_list = that.data.moment;
+
+        for (var i = 0; i < res.data.data.length; i++) {
+          moment_list.push(res.data.data[i]);
+        }
+        // 设置数据  
+        that.setData({
+          moment: that.data.moment
+        })
+        // 隐藏加载框  
+        wx.hideLoading();
+      }*/
+      /*
+      wx.request({
+        url: 'https://xxx/?page=' + page,
+        method: "GET",
+        // 请求头部  
+        header: {
+          'content-type': 'application/text'
+        },
+        success: function (res) {
+          // 回调函数  
+          var moment_list = that.data.moment;
+
+          for (var i = 0; i < res.data.data.length; i++) {
+            moment_list.push(res.data.data[i]);
+          }
+          // 设置数据  
+          that.setData({
+            moment: that.data.moment
+          })
+          // 隐藏加载框  
+          wx.hideLoading();
+        }
+      })*/
+
+    }, 
 });

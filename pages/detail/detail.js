@@ -8,7 +8,7 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'Gayfai-' + this.data.detail.companyName +'-'+ this.data.detail.title,
+      title: 'Offershare-' + this.data.detail.companyName +'-'+ this.data.detail.title,
       path: ['pages/detail/detail?id=',this.data.id].join(''),
       // path: 'pages/offer/offer',
       success: function(res) {

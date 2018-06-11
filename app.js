@@ -141,10 +141,13 @@ App({
     isiOS: wx.getSystemInfoSync().system.indexOf('iOS') === -1?false:true,
    // token: token.token,
     domainwenge: 'http://203.195.206.83:8004',
-    domain:'http://192.168.1.6:8002',
+    domainhelaoshi:'http://192.168.1.6:8006',
+    domain: 'http://203.195.206.83:8004',
     userInfo: null,
     scene: 1001,
     fromPath: '',
-    needReq: true
+    needReq: true,
+    offerpagehistory:[],
+    page: 0
   }
 });
