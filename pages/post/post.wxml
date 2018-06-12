@@ -35,11 +35,21 @@
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">工资</view>
-                </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" bindinput="onInput" id="salary" placeholder="薪水" />
+                    <picker bindchange="changeSalaryType" value="{{salaryIndex}}" range="{{salaryType}}">
+                            <view class="weui-input weui-btn weui-btn_plain-default my-panel-cell">
+                            {{salaryType[salaryIndex]}}  ▼
+                            </view>
+                    </picker>
+                </view>
+                <view class="weui-cell__bd" style="display:{{salaryIndex==0?'':'none'}}">
+                    <input class="weui-input" bindinput="onInput" id="salary" placeholder="月薪(k)" />
+                </view>
+                <view class="weui-cell__bd" style="display:{{salaryIndex==0?'':'none'}}">
+                    <input class="weui-input" bindinput="onInput" id="salary" placeholder="月数" />
+                </view>
+                <view class="weui-cell__bd" style="display:{{salaryIndex==1?'':'none'}}">
+                    <input class="weui-input" bindinput="onInput" id="salary" placeholder="年薪(w)" />
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">

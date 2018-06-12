@@ -29,6 +29,10 @@ Page({
       '大专',
       '其它'  
     ],
+    salaryType: [
+      '月薪',
+      '年薪',
+    ],
     company:[
       '腾讯',
       '阿里',
@@ -41,6 +45,7 @@ Page({
     ],
     cateIndex:3,
     titleIndex:6,
+    salaryIndex:0,
     isInput:false,
     toViewId:'basic'
   },
@@ -92,6 +97,11 @@ Page({
       titleIndex: e.detail.value
     });
   },  
+  changeSalaryType: function (e) {
+    this.setData({
+      salaryIndex: e.detail.value
+    });
+  },
   onInput:function(e){
     var text = e.detail.value.trim();
     var regitem = this.matchreg[e.target.id]|| this.matchreg['default'];
