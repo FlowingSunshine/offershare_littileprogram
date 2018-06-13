@@ -148,6 +148,8 @@ App({
     fromPath: '',
     needReq: true,
     offerpagehistory:[],
-    page: 0
+    offerpagehistorycache: [],
+    page: 0,
+    offerlimit:10
   }
 });

@@ -26,6 +26,7 @@ Page({
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
     // 统计浏览量
+    console.log("options",options);
     app.getAjaxData({
       url: [app.globalData.domain, 'offer/add/heat'].join('/'),
       data: {
@@ -33,20 +34,17 @@ Page({
       },
       success: function (res) {
         // success
-          _this.setData({
-            detail: res.data,
-            id: options.id,
-            hasFav: favState
-          });
+
       },
       fail: function (res) {
         // fail
       },
       complete: function (res) {
         // complete
-        wx.hideToast();
+        //wx.hideToast();
       }
     });
+
     var temp,
     _this = this,
     favState = false;
@@ -56,6 +54,7 @@ Page({
     else{
       favState = false;
     }
+    //options.getdata === undefined
     if (options.getdata === undefined) {
       app.getAjaxData({
         url:[app.globalData.domain, 'offer/select/id'].join('/'),
@@ -64,16 +63,18 @@ Page({
         },
         success: function(res) {
           // success
-          console.log("id:",options.id),
-
+          console.log("detail:",res.data),
+          
           _this.setData({
             detail: res.data,
             id: options.id,
             hasFav: favState
           });
         },
+        
         fail: function(res) {
           // fail
+          console.log("fail");
         },
         complete: function(res) {
           // complete
@@ -95,10 +96,10 @@ Page({
   onReady: function() {
     // 页面渲染完成
   },
-  onShow: function(options) {
+  onShow: function() {
     // 页面显示
     this.detectFav();  
-    console.log(options);
+    //console.log(options);
       
   },
   onHide: function() {
