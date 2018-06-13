@@ -5,7 +5,10 @@ Page({
     list: [],
     kind: 'select/heat',
     keyword: '',
-    anim: {}
+    anim: {},
+    page:0,
+    history:[],
+    offerlimit:10,
   },
   onShareAppMessage: function () {
     return {
@@ -23,7 +26,7 @@ Page({
       }
     }
   },     
-  getInfo: function(urltext, pastData = {}) {
+  getInfo: function (urltext, pastData = []) {
     var _this = this;
     wx.showToast({
       title: 'loading',
@@ -67,9 +70,11 @@ Page({
             return b.number - a.number;
           });*/
           _this.setData({
-            list: list,
+            list: _this.data.history.concat(list),
             corpMode: true
           });
+          _this.data.history=_this.data.list;
+          console.log(_this.data.history);
       },
       fail: function(res) {
         // fail
@@ -111,6 +116,45 @@ Page({
   onUnload: function() {
     // 页面关闭
   },
+  /** 
+   * 页面下拉刷新事件的处理函数 
+   */
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading();
+    // 隐藏导航栏加载框  
+    // app.globalData.offerpagehistory = app.globalData.offerpagehistorycache;
+    this.data.offerlimit = this.data.history.length;
+    this.data.history= [];
+
+    this.getInfo([app.globalData.domain, 'offer', this.data.kind, '?limit=' + this.data.offerlimit].join('/'), {}, true);
+    wx.hideNavigationBarLoading();
+    // 停止下拉动作  
+    wx.stopPullDownRefresh();
+
+  },
+
+    /** 
+   * 页面上拉触底事件的处理函数 
+   */
+  onReachBottom: function () {
+    //var that = this;  
+    //var history = that.data.list;
+
+    console.log("history:", history);
+    // 显示加载图标  
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1  
+
+    this.data.page = this.data.page + 1;
+    console.log("pagetime:", this.data.page);
+    offset = this.data.page * 10;
+    this.getInfo([app.globalData.domain, 'offer', this.data.kind, '?offset=' + offset].join('/'), {}, true);
+
+  }, 
+
+  
   tapAbout: function() {
     wx.navigateTo({
       url: '../about/about'
