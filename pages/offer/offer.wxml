@@ -38,12 +38,17 @@
   </swiper>-->
   <navigator class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="{{*this}}" url="../detail/detail?id={{item.id}}">
     <view class="weui-panel__hd">
-      <span class="my-text-left">{{item.category}}</span>
-      <span class="my-text-right my-panel-cell">{{item.title}}</span>
+      <span class="my-text-left">{{item.companyName}}</span>
+      <span class="my-text-right my-panel-cell">{{item.position}}</span>
     </view>
     <view class="weui-panel__bd">
       <view class="weui-media-box weui-media-box_text">
-        <view class="weui5px 15px 15px 15px5px 15px 15p-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}</view>
+        <view wx:if="{{item.salaryMonth!=0}}">
+          <view class="my-text-left weui5px 15px 15px 15px5px 15px 15p-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}</view>
+        </view>
+         <view wx:if="{{item.salaryYear!=0}}">
+        <view class=" weui0px 0px 0px 0px0px 0px 15p-media-box__title weui-media-box__title_in-text">{{item.salaryYear}}w</view>
+        </view>
         <view class="weui-media-box__desc">
           <!--<span class="my-text-left my-panel-cell">浏览量：{{item.number}}</span>-->
           <span class="my-text-left my-panel-cell" >浏览量：{{item.heat}}</span>

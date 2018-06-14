@@ -113,6 +113,7 @@ Page({
           success: function(res) {
             // 调用成功返回res.data
             var list = res.data;
+            console.log("list:",list);
             if (list.length < 1){
               wx.showToast({
                 title: '无结果',

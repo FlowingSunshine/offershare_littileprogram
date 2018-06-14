@@ -14,7 +14,7 @@
                     <view class="weui-label">职位</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <view class="weui-input my-panel-cell">{{detail.title}}</view>
+                    <view class="weui-input my-panel-cell">{{detail.position}}</view>
                 </view>
             </view>            
             <view class="weui-cell weui-cell_input">

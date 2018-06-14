@@ -43,13 +43,13 @@
                     </picker>
                 </view>
                 <view class="weui-cell__bd" style="display:{{salaryIndex==0?'':'none'}}">
-                    <input class="weui-input" bindinput="onInput" id="salary" placeholder="月薪(k)" />
+                    <input class="weui-input" bindinput="onInput" id="salaryMonth" placeholder="月薪(k)" />
                 </view>
                 <view class="weui-cell__bd" style="display:{{salaryIndex==0?'':'none'}}">
-                    <input class="weui-input" bindinput="onInput" id="salary" placeholder="月数" />
+                    <input class="weui-input" bindinput="onInput" id="month" placeholder="月数" />
                 </view>
                 <view class="weui-cell__bd" style="display:{{salaryIndex==1?'':'none'}}">
-                    <input class="weui-input" bindinput="onInput" id="salary" placeholder="年薪(w)" />
+                    <input class="weui-input" bindinput="onInput" id="salaryYear" placeholder="年薪(w)" />
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">

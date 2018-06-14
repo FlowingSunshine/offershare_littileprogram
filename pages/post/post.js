@@ -53,7 +53,9 @@ Page({
     company:'',
     position:'',
     city:'',
-    salary:'',
+    month:'',
+    salaryMonth:'',
+    salaryYear:'',
     remark:''
   },
   matchreg : {
@@ -142,14 +144,23 @@ Page({
   tapCancel:function(){
   },
   tapSubmit:function(){
+    var salary_month='';
+    console.log("month,",this.info.month);
+    if(this.info.salaryMonth===''||this.info.month===''){
+      this.info.salaryMonth='0';
+      this.info.month='0';
+      salary_month='0';
+    }else{
+    salary_month = this.info.salaryMonth+"k*"+ this.info.month;
+    }
     var param = {
       'category':this.data.category[this.data.cateIndex],
       'company_name':this.info.company,
-      //'position':this.info.position,
-      //'city':this.info.city,
-      'title':this.info.position,
-      'salary_month':this.info.salary,
-      'salary_year':"22w",
+      'position':this.info.position,
+      'city':this.info.city,
+      'title':this.info.title,
+      'salary_month': salary_month,
+      'salary_year':this.info.salaryYear,
       "user_id":1,
       'eduation':this.data.title[this.data.titleIndex]
     };   
