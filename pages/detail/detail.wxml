@@ -55,9 +55,33 @@
                 <view class="weui-cell__hd">
                     <view class="weui-label">工资</view>
                 </view>
-                <view class="weui-cell__bd">
-                    <view class="weui-input">{{detail.salaryMonth}}</view>
+                
+                <view wx:if="{{detail.salaryMonth!=0&&detail.salaryYear!=0}}">
+                  <view class="weui-cell__bd">
+                      <view class="weui-input">月薪{{detail.salaryMonth}}</view>
+                      <view class="weui-input">年薪{{detail.salaryYear}}w</view>                      
+                  </view>
                 </view>
+                
+                
+                <view wx:if="{{detail.salaryMonth!=0&&detail.salaryYear==0}}">
+                  <view class="weui-cell__bd">
+                      <view class="weui-input">月薪{{detail.salaryMonth}}</view>
+                  </view>
+                </view>
+                
+                <view wx:if="{{detail.salaryYear!=0&&detail.salaryMonth==0}}">
+                  <view class="weui-cell__bd">
+                      <view class="weui-input">年薪{{detail.salaryYear}}w</view>
+                  </view>
+                </view>
+              <!--
+                <view wx:if="{{detail.salaryYear!=0}}">
+                  <view class="weui-cell__bd">
+                      <view class="weui-input">{{detail.salaryYear}}w</view>
+                  </view>
+                </view>
+                -->
             </view>
             <view class="weui-cell weui-cell_input my-panel-cell">
                 <view class="weui-cell__hd">

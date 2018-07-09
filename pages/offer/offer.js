@@ -1,5 +1,4 @@
-/*Page() 函数用来注册一个页面。接受一个 object 参数()里面的就是
-其指定页面的初始数据、生命周期函数、事件处理函数等*/
+/*其指定页面的初始数据、生命周期函数、事件处理函数等*/
 //获取APP实例
 var app = getApp();
 Page({
@@ -15,9 +14,10 @@ Page({
         searchhistory: [],
         inputval:'',
         keyword: '',   
-        
+        //search: false,   //改动1：添加search标记
     },
     cache : [],
+    
     //转发
     onShareAppMessage: function () {
       return {
@@ -43,7 +43,6 @@ Page({
     },*/
     /*页面显示,每次打开页面都会调用一次。访问后台获取信息 */
     onHide:function(){
-
     },
     onLoad: function(){
     // 页面初始化 
@@ -61,7 +60,6 @@ Page({
           this.setData({
             'searchhistory':wx.getStorageSync('searchhistory') || []
           });  
-         
         }
         /*
         this.getInfo([app.globalData.domain, 'webapi', this.data.kind, ''].join('/'), {});
@@ -93,9 +91,7 @@ Page({
         });
     },
     
-    /*获取信息
-    */
-    
+    /*获取信息 */
     getInfo: function (urltext, pastData = ["limit = 10", "offset=1"], cache = false) {
         console.log("getInfo start");
         var _this = this;
@@ -113,7 +109,7 @@ Page({
           success: function(res) {
             // 调用成功返回res.data
             var list = res.data;
-            console.log("list:",list);
+         //   console.log("list:",list);
             if (list.length < 1){
               wx.showToast({
                 title: '无结果',
@@ -122,19 +118,33 @@ Page({
               });
             }
             else{
-              
               wx.hideToast(); //隐藏消息提示框
             }
             //更新data的list
-          
-            _this.setData({
+            console.log("search data",app.search)
+            if (app.globalData.search===false){
+              console.log("nosearch")
+              _this.setData({
               list: app.globalData.offerpagehistory.concat(list),   
               hasData: list.length?true:false
-            });
-            app.globalData.offerpagehistory=_this.data.list;
+              });
+              app.globalData.offerpagehistory = _this.data.list;
+            }
+            
+           
+            //改动2：如果search为true调用
+            else if (app.globalData.search===true){
+              console.log("search")
+               _this.setData({
+              list: list,
+              hasData: list.length ? true : false
+              })
+            }
+          console.log("list:", list);
             if (cache) {
               _this.cache = list;
             }
+            app.globalData.search = false;
           },
           // 接口调用失败的回调
           fail: function(res) {
@@ -158,22 +168,23 @@ Page({
             inputShowed: true
         });
     },
-    //隐藏输入
-    hideInput: function () {
+    //隐藏输入,改动3：search标志为false
+    hideInput: function () {      
           this.setData({
-              inputShowed: false
+              inputShowed: false,
+              search: false
           });
     },
 
     //输入关键词
     inputTyping: function (e) {
       var dataToSet = {};
+      //获取xml中传来的value{{keyword}}
       this.setData({
         'keyword':e.detail.value          
       });
       if (e.detail.value === '') {
-        // this.getInfo([app.globalData.domain, 'webapi', this.data.kind, ''].join('/'), {});
-        
+        // this.getInfo([app.globalData.domain, 'webapi', this.data.kind, ''].join('/'), {});        
         this.setData({
           isNewest: true
         })
@@ -197,20 +208,25 @@ Page({
           'searchhistory':[]
         });        
     },   
-
-    //
     tapBackground: function(e){
         if (e.target.id === 'historyBackground'){
           this.hideInput();
         }
     },
-    //搜素触发
+    //搜索触发
     tapSearch: function() {
-        var history = this.data.history;
-        this.hideInput();
+        /*
+        this.setData({
+           search:true
+        });       //修改处4：search为true*/
+      app.globalData.search=true;
+        var history = this.data.searchhistory;
+    //    this.hideInput();
+        console.log("searchstart",this.data.search)  
         //关键词为空
         if (this.data.keyword.trim() === '') {
           if ( this.data.isNewest) {//是最新列表而非搜索页
+            //显示消息提示框
             wx.showToast({
               'title': '关键词为空',
               'icon': 'loading',
@@ -227,14 +243,19 @@ Page({
           this.setData({
             isNewest: false
           });
-          //进行搜索，设置非最新列表
+          //进行搜索，改动5：调用getInfo
           this.getInfo(
-            [app.globalData.domain, 'webapi/jobsearch', ''].join('/'),
-            {
+            [app.globalData.domain, 'offer/search','company_name?value='+this.data.keyword].join('/'), {},true
+           /* {
               'content': this.data.keyword.trim()
-            });
+            }*/            
+            );
+           //app.globalData.offerpagehistory=[];
+           
+           console.log("listforsearch:",this.data.list);
+           console.log([app.globalData.domain, 'offer/search', 'company_name?value=' + this.data.keyword].join('/'))
           //如果当前搜索词不在历史中，添加到history中
-          if (history.indexOf(this.data.keyword) === -1){
+        if (history.indexOf(this.data.keyword) === -1){
             //保持4个历史,unshift向数组的开头添加一个或更多元素，并返回新的长度
             history.unshift(this.data.keyword.trim());
             while(history.length > 4){
@@ -244,8 +265,9 @@ Page({
             this.setData({
               'searchhistory':history
             });
-          }
-        }
+        } 
+       }
+      this.hideInput();
     },
     //跳转About页面
     tapAbout: function() {
@@ -253,9 +275,7 @@ Page({
           url: '../about/about'
         });
     },
-    /** 
-   * 页面下拉刷新事件的处理函数 
-   */  
+    /* 页面下拉刷新事件的处理函数 */  
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     //app.offerlimit=(app.page+1)*10
@@ -270,24 +290,19 @@ Page({
     wx.stopPullDownRefresh();
     
     },
-    /** 
-   * 页面上拉触底事件的处理函数 
-   */
+    /*页面上拉触底事件的处理函数  */
   onReachBottom: function () {
       var that = this;
       //var history=this.data.list;
-      
       console.log("history:",history);
       // 显示加载图标  
       wx.showLoading({
         title: '玩命加载中',
       })
-      // 页数+1  
-      
+      // 页数+1        
       app.globalData.page = app.globalData.page + 1;
       console.log("pagetime:",app.globalData.page);
       offset = app.globalData.page*10;
-      this.getInfo([app.globalData.domain, 'offer/select', this.data.kind, '?offset='+offset].join('/'), {}, true);
-      
+      this.getInfo([app.globalData.domain, 'offer/select', this.data.kind, '?offset='+offset].join('/'), {}, true);      
     }, 
 });

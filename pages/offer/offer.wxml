@@ -11,7 +11,8 @@
                 <view class="weui-search-bar__box">
                     <!--搜索栏，icon是图标，搜索的放大镜图标-->
                     <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <!--输入框,空时占位为“搜索”，输入时触发input事件处理函数inputTyping，点击完成按钮时触发函数tapSearch-->
+                    <!--输入框,placeholder表示空时占位为“搜索”，focus表示获取焦点
+                      bindinput表示输入时触发input事件处理函数inputTyping，点击完成按钮时触发函数tapSearch-->
                     <input type="text" class="weui-search-bar__input" placeholder="搜索" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="tapSearch" value="{{keyword}}" />
                 </view>
                 <!--回车以后搜索内容被隐藏,只显示"搜索"和图标-->
@@ -69,16 +70,16 @@
 <!--绑定tapBackground函数,搜索界面-->
 <view class="my-panel my-panel-full my-history" hidden="{{!inputShowed}}" bindtap="tapBackground" id="historyBackground"> 
   <view class="weui-cells__title">搜索历史</view>  
-  <view class="weui-loadmore weui-loadmore_line" wx:if="{{history.length === 0}}">
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{searchhistory.length === 0}}">
       <view class="weui-loadmore__tips weui-loadmore__tips_in-line" >暂无搜索历史</view>
   </view>            
-  <view class="weui-cells weui-cells_after-title" wx:if="{{history.length !== 0}}">         
-      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{history}}" wx:key="{{*this}}" bindtap="clickHistory" data-word="{{item}}">
+  <view class="weui-cells weui-cells_after-title" wx:if="{{searchhistory.length !== 0}}">         
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{searchhistory}}" wx:key="{{*this}}" bindtap="clickHistory" data-word="{{item}}">
           <view class="weui-cell__bd">{{item}}</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
   </view>    
-  <view class="weui-loadmore weui-loadmore_line" wx:if="{{history.length !== 0}}">
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{searchhistory.length !== 0}}">
       <view class="weui-loadmore__tips weui-loadmore__tips_in-line my-panel-tag" bindtap="clearHistory">清除历史</view>
   </view>                        
 </view>

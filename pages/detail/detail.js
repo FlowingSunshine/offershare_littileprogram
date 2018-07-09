@@ -6,6 +6,7 @@ Page({
     id: '',
     hasFav: false,
   },
+  //右上角转发
   onShareAppMessage: function () {
     return {
       title: 'Offershare-' + this.data.detail.companyName +'-'+ this.data.detail.title,
@@ -164,6 +165,7 @@ Page({
       hasFav: favState
     });        
   },
+  //分享后保存到收藏中
   saveToFav: function(){
     app.setFav(this.data.id.toString(), this.data.detail);
     this.detectFav();
@@ -173,6 +175,7 @@ Page({
       "duration":1500
     });
   },
+  //取消收藏
   removeFromFav: function(){
     app.delFav(this.data.id.toString());
     this.detectFav();

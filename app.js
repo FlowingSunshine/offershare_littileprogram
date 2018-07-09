@@ -150,6 +150,7 @@ App({
     offerpagehistory:[],
     offerpagehistorycache: [],
     page: 0,
-    offerlimit:10
+    offerlimit:10,
+    search: false
   }
 });

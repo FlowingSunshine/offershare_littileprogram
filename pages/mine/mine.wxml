@@ -4,10 +4,10 @@
   </view>
 </view>
 <view class="my-noscroll">
-  <navigator class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="{{*this}}" url="../detail/detail?id={{item.id}}&getdata=request">
+  <navigator class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="{{*this}}" url="../detail/detail?id={{item.id}}">
     <view class="weui-panel__hd">
       <span class="my-text-left">{{item.companyName}}</span>
-      <span class="my-text-right">{{item.category}}-{{item.title}}</span>
+      <span class="my-text-right">{{item.city}}-{{item.position}}</span>
     </view>
     <!--<view class="weui-panel__bd">
       <view class="weui-media-box weui-media-box_text">
