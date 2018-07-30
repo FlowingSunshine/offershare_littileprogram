@@ -109,6 +109,7 @@ Page({
   onUnload: function() {
     // 页面关闭
   },
+  //返回按键
   tapBack:function(){
     if (/detail/.test(app.globalData.fromPath)) {
       wx.switchTab({
@@ -165,20 +166,30 @@ Page({
       hasFav: favState
     });        
   },
-  //分享后保存到收藏中
-  saveToFav: function(){
-    app.setFav(this.data.id.toString(), this.data.detail);
-    this.detectFav();
+  //只分享
+  shareToFav: function(){
+    //app.setFav(this.data.id.toString(), this.data.detail);
+    //this.detectFav();
     wx.showToast({
       "title":"success",
       "icon":"success",
       "duration":1500
     });
   },
+  //只收藏
+  collectToFav: function () {
+    app.setFav(this.data.id.toString(), this.data.detail);
+    this.detectFav();
+    wx.showToast({
+      "title": "success",
+      "icon": "success",
+      "duration": 1500
+    });
+  },
   //取消收藏
   removeFromFav: function(){
-    app.delFav(this.data.id.toString());
-    this.detectFav();
+   // app.delFav(this.data.id.toString());
+    //this.detectFav();
     wx.showToast({
       "title":"success",
       "icon":"success",
@@ -188,6 +199,7 @@ Page({
   toShare: function(){
     wx.showShareMenu();
   },
+  //可信度
   tapRank: function(e) {
     var that = this;
     wx.showModal({
@@ -198,7 +210,62 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定');
           url = [app.globalData.domain, 'webapi', e.target.dataset.rank, ''].join('/');
+          //调用提交评价
           that.postRank(url);
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+      }
+    })
+  },
+  //添加代码,收藏
+  mineOffer: function (urltext){
+    wx.showToast({
+      title: 'loading',
+      icon: 'loading',
+      duration: 10000
+    });
+    app.getAjaxData({
+      url: urltext,
+      data: {
+        'id': this.data.id
+      },
+      success: function (res) {
+        wx.showToast({
+          title: '收藏成功',
+          icon: 'success',
+          duration: 2000
+        });
+      },
+      fail: function (res) {
+        // fail
+        wx.showToast({
+          title: '错误',
+          icon: 'success',
+          duration: 2000
+        });
+      },
+      complete: function (res) {
+        setTimeout(function () {
+          app.globalData.needReq = true;
+          wx.navigateBack();
+        }, 1500);
+      }
+    })
+  },
+  //调用mineOffer
+  collectOffer:function(){
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定收藏？',
+      success: function (res) {
+        var url = '';
+        if (res.confirm) {
+          console.log('用户点击确定');
+          url = [app.globalData.domain, 'webapi', e.target.dataset.rank, ''].join('/');
+          //调用提交评价
+          that.mineOffer(url);
         } else if (res.cancel) {
           console.log('用户点击取消');
         }

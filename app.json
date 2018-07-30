@@ -12,19 +12,20 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#1e90ff",
+    "navigationBarBackgroundColor": "#E9F6FF",
     "navigationBarTitleText": "OfferShare",
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
+  
   "tabBar": {
-    "selectedColor": "#1e90ff",
+    "selectedColor": "black",  
     "list": [
       {
         "pagePath": "pages/hot/hot",
         "iconPath": "image/ing.png",
         "selectedIconPath": "image/ing-active.png",
-        "text": "热门公司"
+        "text": "最受关注"
       },
       {
         "pagePath": "pages/offer/offer",

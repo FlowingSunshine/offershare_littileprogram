@@ -44,7 +44,7 @@ Page({
           var hash = {};
           var filted = [];
           var temp = {
-            'company': list.companyName,
+            'company':  list.companyName,
             'number': 0,
             'positions': []
           };

@@ -1,10 +1,10 @@
 <!--创建视图容器,顶部界面-->
 <view class=" my-top-fixed">
         <view class="weui-search-bar">
-            <!--绑定tabAbout，跳转About界面-->
+            <!--绑定tabAbout，跳转About界面
             <view class="weui-btn weui-btn_plain-default my-btn-more my-btn-icon" bindtap="tapAbout">
                 <image src="../../static/icon_nav_form.png"></image>
-            </view>
+            </view>-->
             <!--搜索格式-->
             <view class="weui-search-bar__form">
                 <!--搜索栏view-->

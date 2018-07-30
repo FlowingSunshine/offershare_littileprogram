@@ -11,6 +11,13 @@ icon {
   background-color: #FFFFFF;
   line-height: 1.41176471;
   font-size: 17px;
+  border-radius:8%;
+  margin:8px;
+  border-left:15px;
+
+  overflow:hidden;
+
+
 }
 .weui-cells:before {
   content: " ";
@@ -49,6 +56,7 @@ icon {
   padding-left: 15px;
   padding-right: 15px;
   font-size: 14px;
+  
 }
 .weui-cell {
   padding: 10px 15px;
@@ -150,6 +158,8 @@ icon {
 .weui-cell_input {
   padding-top: 0;
   padding-bottom: 0;
+  border-radius:8%;
+
 }
 .weui-label {
   width: 105px;
@@ -540,11 +550,13 @@ icon {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
+  background-color:#E9F6FF;
 }
 .weui-flex__item {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
+  background-color:#E9F6FF;
 }
 .weui-btn {
   margin-top: 15px;
@@ -753,9 +765,11 @@ icon {
 }
 .weui-panel {
   background-color: #FFFFFF;
-  margin-top: 10px;
+  margin: 8px;
+  border-left: 15px;
   position: relative;
   overflow: hidden;
+  border-radius: 8%;
 }
 .weui-panel:first-child {
   margin-top: 0;
@@ -785,6 +799,7 @@ icon {
   color: #000000;
   font-size: 16px;
   position: relative;
+  border-radius: 50%;
 }
 .weui-panel__hd:after {
   content: " ";
@@ -967,7 +982,7 @@ icon {
 }
 .weui-search-bar {
   position: relative;
-  padding: 8px 10px;
+  padding: 100px 5px 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -983,11 +998,11 @@ icon {
 .weui-icon-search_in-box {
   position: absolute;
   left: 10px;
-  top: 7px;
+  top: 8px;
 }
 .weui-search-bar__text {
   display: inline-block;
-  font-size: 14px;
+  font-size: 10px;
   vertical-align: middle;
 }
 .weui-search-bar__form {
@@ -996,8 +1011,8 @@ icon {
   -webkit-flex: auto;
           flex: auto;
   border-radius: 5px;
-  background: #FFFFFF;
-  border: 1rpx solid #E6E6EA;
+  background: white;
+  /*border: 1rpx solid #E6E6EA;*/
 }
 .weui-search-bar__box {
   position: relative;
@@ -1029,7 +1044,8 @@ icon {
   border-radius: 3px;
   text-align: center;
   color: #9B9B9B;
-  background: #FFFFFF;
+  /*搜索框内背景颜色*/
+  background:#F7F7F9;
   line-height: 28px;
 }
 .weui-search-bar__cancel-btn {

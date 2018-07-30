@@ -4,28 +4,12 @@
     <image src="../../static/icon_nav_back.png"></image>
   </view>
   <view class="weui-flex__item">
-    <view class="placeholder">薪资详情</view>
+    <view class="placeholder">Offer</view>
   </view>
 </view>
 <view class="my-scroll">
         <view id="basic" class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input ">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">职位</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <view class="weui-input my-panel-cell">{{detail.position}}</view>
-                </view>
-            </view>            
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">行业</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <view class="weui-input">{{detail.category}}</view>
-                </view>
-            </view>            
-            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
                     <view class="weui-label">公司</view>
                 </view>
@@ -34,10 +18,29 @@
                     <navigator url="../corp/corp?name={{detail.company}}" class="my-panel-link">{{detail.companyName}}</navigator>
                    </view>
                 </view>
-            </view>                        
+            </view>   
+            <view class="weui-cell weui-cell_input ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">职位</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <view class="weui-input my-panel-cell">{{detail.position}}</view>
+                </view>
+            </view>    
+            <!--   
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
-                    <view class="weui-label">地点</view>
+                    <view class="weui-label">行业</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <view class="weui-input">{{detail.category}}</view>
+                </view>
+            </view>
+            -->            
+                      
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">城市</view>
                 </view>
                 <view class="weui-cell__bd">
                     <view class="weui-input">{{detail.city}}</view>
@@ -53,7 +56,7 @@
             </view>              
             <view class="weui-cell weui-cell_input my-panel-cell">
                 <view class="weui-cell__hd">
-                    <view class="weui-label">工资</view>
+                    <view class="weui-label">薪资</view>
                 </view>
                 
                 <view wx:if="{{detail.salaryMonth!=0&&detail.salaryYear!=0}}">
@@ -83,6 +86,7 @@
                 </view>
                 -->
             </view>
+            <!--
             <view class="weui-cell weui-cell_input my-panel-cell">
                 <view class="weui-cell__hd">
                     <view class="weui-label">可信度</view>
@@ -91,6 +95,7 @@
                     <view class="weui-input">{{detail.trust}}</view>
                 </view>
             </view>
+            -->
             <view class="weui-cell weui-cell_input my-panel-cell">
                 <view class="weui-cell__hd">
                     <view class="weui-label">浏览量</view>
@@ -109,7 +114,7 @@
             </view>                                              
         </view>
 
-        <view class="weui-cells__title">备注</view>
+        <view class="weui-cells__title">附加信息</view>
         <view id="remark" class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
@@ -117,19 +122,22 @@
                 </view>
             </view>
         </view>    
-
+<!--
 <view class="weui-form-preview">
         <view class="weui-form-preview__ft">
             <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bindtap="tapRank" data-rank="jobdislike">不真实</view>        
             <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="tapRank"  data-rank="joblike">可信</view>
         </view>
 </view>
+-->
 
 <view class="my-foot"></view>
 </view>
 
 <view class="my-bottom">
-    <!-- <view class="btn bad" bindtap="removeFromFav" wx:if="{{hasFav}}">取消收藏</view> -->
+     <!--<view class="btn bad" bindtap="removeFromFav" wx:if="{{hasFav}}">收藏</view> -->
     <!-- <view  class="btn good" bindtap="saveToFav" wx:if="{{!hasFav}}" >加入收藏</view> -->
-    <button  class="btn good" open-type="share" bindtap="saveToFav">点我分享</button>
+        <button  class="btn bad" type="default" bindtap="collectToFav">收藏</button> 
+    <button  class="btn good" open-type="share" >分享</button>
+ 
 </view>
